@@ -234,8 +234,10 @@ S3 bucket name.
             "Effect": "Allow",
             "Action": [
                 "logs:GetLogEvents",
+                "logs:PutLogEvents",
                 "logs:FilterLogEvents",
-                "logs:DeleteLogStream"
+                "logs:DeleteLogStream",
+                "logs:CreateLogStream"
             ],
             "Resource": [
                 "arn:aws:logs:*:*:log-group:/aws/batch/job",
@@ -255,7 +257,8 @@ metadata) to talk to AWS services.
 When creating the role in the web console, choose _AWS service_ as the type of
 trusted entity, the _Elastic Container Service_ as the specific trusted
 service, and the _Elastic Container Service Task_ as the use case.  Attach the
-_NextstrainJobsAccessToBucket_ policy you created above.  Finally, give the
+_NextstrainJobsAccessToBatch_, _NextstrainJobsAccessToBucket_, and
+_NextstrainJobsAccessToLogs_ policies you created above.  Finally, give the
 role a name and description of your choosing.  This document assumes the role
  name is _NextstrainJobsRole_.
 
